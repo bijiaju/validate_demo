@@ -75,8 +75,9 @@ public class ValidateUtils {
         if (constraints != null && !constraints.isEmpty()) {
             List<String> messages = new ArrayList<>();
             for (ConstraintViolation<Object> constraint : constraints) {
-                messages.add("["+constraint.getPropertyPath().toString() +"="+constraint.getInvalidValue()+ "]:" + constraint.getMessage());
+               // messages.add("["+constraint.getPropertyPath().toString() +"="+constraint.getInvalidValue()+ "]:" + constraint.getMessage());
                // messages.add("["+constraint.getInvalidValue()+ "]:" + constraint.getMessage());
+                messages.add(constraint.getMessage());
             }
             String errorMsg = StringUtils.join(messages, ',');
             if(StringUtils.isNotEmpty(errorMsg)){

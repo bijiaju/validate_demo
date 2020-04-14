@@ -1,6 +1,7 @@
 package com.hp.docker_base.controller.error;
 
 
+import com.hp.docker_base.bean.exception.ServiceException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +23,18 @@ class GlobalExceptionHandler {
         System.out.println("###出现异常！");
         Map<String,Object> map=new HashMap<>();
         map.put("msg",e.getBindingResult().getFieldError().getDefaultMessage());
+        return map;
+    }
+
+    /**
+     * 方法参数校验
+     */
+    @ExceptionHandler(ServiceException.class)
+    @ResponseBody
+    public Object handleServiceArgumentNotValidException(ServiceException e) {
+        System.out.println("###出现异常！");
+        Map<String,Object> map=new HashMap<>();
+        map.put("msg",e.getMessage());
         return map;
     }
 

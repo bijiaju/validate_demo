@@ -110,17 +110,22 @@
             </plugin>
             <!-- Docker maven plugin ，其实就是代替dockerfile的写法，上传一气呵成-->
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Docker maven plugin ，其实就是代替dockerfile的写法，上传一气呵成-->
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
                     <!-- docker私服的地址 -->
-                    <dockerHost>http://192.168.176.251:2375</dockerHost>
+                    <dockerHost>http://192.168.1.76:2375</dockerHost>
                     <!--最终生成 镜像名称以及版本号-->
-                    <imageName>192.168.176.251:5000/docker_base:1.0.1</imageName>
+                    <imageName>192.168.1.76:5000/validate_demo:1.0.1</imageName>
                     <!--依赖的基础镜像-->
                     <!--  <baseImage>hub.c.163.com/r00txx/java8</baseImage>-->
-                     <!--Dockerfile的位置 -->
+                    <!--Dockerfile的位置 -->
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
                     <resources>
